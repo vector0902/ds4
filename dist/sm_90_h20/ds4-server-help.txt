@@ -1,0 +1,59 @@
+ds4-server
+Serve one loaded DwarfStar model through OpenAI, Responses, Anthropic, and completion-compatible HTTP APIs.
+
+Usage: ds4-server [options]
+
+Model And Runtime
+  -m, --model FILE               GGUF model path. Default: ds4flash.gguf
+  --metal | --cuda | --cpu       Select the backend explicitly.
+  --backend NAME                 Backend name: metal, cuda, or cpu.
+  -c, --ctx N                    Allocated context tokens.
+  -n, --tokens N                 Default max output tokens when clients omit a limit.
+  -t, --threads N                CPU helper threads for host-side/reference work.
+  --power N                      GPU duty-cycle target, 1..100. Default: 100
+  --ssd-streaming                Metal/CUDA/ROCm: opt in to SSD-backed model streaming instead of full residency.
+  --ssd-streaming-cold           SSD streaming: skip default popularity-based expert-cache preload.
+  --ssd-streaming-cache-experts N|NGB
+      SSD streaming: routed expert cache as expert count or GiB, e.g. 32GB. Metal/ROCm default: 80% working set minus non-routed weights; CUDA default: backend fixed cache.
+  --ssd-streaming-preload-experts N
+      SSD streaming: upfront popularity preload count. Default: auto hot seed capped at 4096; use --ssd-streaming-cold to skip.
+  --simulate-used-memory NGB     Diagnostic: lock N GiB before model load to simulate a smaller-memory machine.
+  --prefill-chunk N              Metal graph prefill chunk size. Default: auto (PRO long prompts use 8192; others use 4096).
+
+HTTP API
+  --host HOST                    Bind address. Default: 127.0.0.1
+  --port N                       Bind port. Default: 8000
+  --cors                         Add Access-Control-Allow-* headers for browser JS clients.
+  --trace FILE                   Write prompts, cache decisions, output, and tool calls.
+Endpoints: /v1/chat/completions, /v1/responses, /v1/completions, and /v1/messages.
+Model endpoint aliases include deepseek-v4-flash and deepseek-v4-pro; both serve the loaded GGUF.
+
+Disk KV Cache
+  --kv-disk-dir DIR              Enable disk KV checkpoints in DIR.
+  --kv-disk-space-mb N           Disk budget. Default when enabled: 4096
+  --kv-cache-min-tokens N        Do not save/load checkpoints shorter than N. Default: 512
+  --kv-cache-cold-max-tokens N   Save cold first prompts up to N tokens. 0 disables. Default: 30000
+  --kv-cache-continued-interval-tokens N
+      Save aligned continued frontiers. 0 disables. Default: 10000
+  --kv-cache-boundary-trim-tokens N
+      Trim tail tokens for cold boundary saves. Default: 32
+  --kv-cache-boundary-align-tokens N
+      Align cold boundary saves to this multiple. Default: 2048
+  --kv-cache-reject-different-quant
+      Reject checkpoints written with different routed-expert quantization.
+  --disable-exact-dsml-tool-replay
+      Disable exact sampled DSML tool replay map.
+  --tool-memory-max-ids N        Exact tool-call IDs kept in RAM. Default: 100000
+
+More Info
+    Runtime full info:         --help runtime
+    Distributed inference:     --help distributed
+    Steering full info:        --help steering
+    HTTP API:                  --help api
+    Disk KV cache:             --help kv-cache
+    Thinking behavior:         --help thinking
+
+Examples
+  local API                      ./ds4-server --ctx 100000 --kv-disk-dir ~/.ds4/server-kv --kv-disk-space-mb 8192
+  curl                           curl http://127.0.0.1:8000/v1/models
+
