@@ -2705,6 +2705,19 @@ extern "C" int ds4_gpu_set_model_fd(int fd) {
     return ds4_gpu_set_model_fd_for_map(fd, g_model_host_base);
 }
 
+extern "C" int ds4_gpu_register_aux_model(const void *model_map, uint64_t model_size) {
+    if (!model_map || model_size == 0) return 0;
+    cudaError_t err = cudaHostRegister((void *)model_map, (size_t)model_size,
+                                        cudaHostRegisterMapped | cudaHostRegisterReadOnly);
+    if (err != cudaSuccess) {
+        fprintf(stderr, "ds4: CUDA auxiliary model host registration failed: %s\n",
+                cudaGetErrorString(err));
+        (void)cudaGetLastError();
+        return 0;
+    }
+    return 1;
+}
+
 extern "C" int ds4_gpu_cache_model_range(const void *model_map, uint64_t model_size, uint64_t offset, uint64_t bytes, const char *label) {
     if (!model_map || bytes == 0) return 1;
     if (offset > model_size || bytes > model_size - offset) return 0;

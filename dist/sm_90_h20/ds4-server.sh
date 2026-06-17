@@ -8,7 +8,7 @@ normal(){
 export DS4_CUDA_Q8_F16_CACHE_MB=3072
 #export DS4_CUDA_Q8_F16_CACHE_MB=4096 # OOM on H20 96GB
 }
-#normal
+normal
 
 mtp(){
 OPTS=" --mtp DeepSeek-V4-Flash-MTP-Q4K-Q8_0-F32.gguf $OPTS "
