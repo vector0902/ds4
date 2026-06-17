@@ -80,3 +80,47 @@ ds4: cuda backend initialized for graph diagnostics
 0617 13:20:48 ds4-server: chat ctx=0..5076:5076 gen=252 TOOLS finish=stop 40.005s
 0617 13:20:48 ds4-server: live kv cache miss live=5328 prompt=5331 common=5076 reason=token-mismatch
 0617 13:20:48 ds4-server: chat ctx=0..5331:5331 TOOLS prompt start
+0617 13:21:20 ds4-server: chat ctx=0..5331:5331 TOOLS prompt done 32.267s
+0617 13:21:22 ds4-server: chat ctx=5331..5381:50 gen=50 TOOLS DSML_START decoding chunk=27.25 t/s avg=27.25 t/s 1.835s
+0617 13:21:22 ds4-server: chat ctx=5381..5399:18 gen=68 TOOLS DSML_START DSML_END decoding chunk=27.41 t/s avg=27.29 t/s 2.492s
+0617 13:21:22 ds4-server: tool calls ctx=0..5331:5331 n=1 raw_dsml=1 ids=[call_584fc5a49d8ffdfa3b9ea141c854a1f5] names=[read_file]
+0617 13:21:22 ds4-server: chat ctx=0..5331:5331 gen=68 TOOLS DSML_START DSML_END finish=tool_calls 34.759s
+0617 13:21:22 ds4-server: live kv cache miss live=5399 prompt=5429 common=5331 reason=token-mismatch
+0617 13:21:22 ds4-server: chat ctx=0..5429:5429 TOOLS prompt start
+0617 13:21:55 ds4-server: chat ctx=0..5429:5429 TOOLS prompt done 32.858s
+0617 13:21:55 ds4-server: chat ctx=5429..5434:5 gen=5 TOOLS THINKING decoding chunk=27.16 t/s avg=27.16 t/s 0.184s
+ds4-server: thinking not closed, ignoring DSML in reasoning
+0617 13:21:55 ds4-server: chat ctx=0..5429:5429 TOOLS final stream failed
+0617 13:21:55 ds4-server: chat ctx=0..5429:5429 gen=5 TOOLS THINKING finish=error error="client stream write failed" 33.043s
+0617 13:21:55 ds4-server: live kv cache miss live=5434 prompt=5449 common=5429 reason=token-mismatch
+0617 13:21:55 ds4-server: chat ctx=0..5449:5449 TOOLS prompt start
+0617 13:22:28 ds4-server: chat ctx=0..5449:5449 TOOLS prompt done 32.979s
+0617 13:22:30 ds4-server: chat ctx=5449..5499:50 gen=50 TOOLS DSML_START decoding chunk=27.19 t/s avg=27.19 t/s 1.839s
+0617 13:22:32 ds4-server: chat ctx=5499..5549:50 gen=100 TOOLS DSML_START decoding chunk=27.24 t/s avg=27.21 t/s 3.674s
+0617 13:22:34 ds4-server: chat ctx=5549..5599:50 gen=150 TOOLS DSML_START decoding chunk=27.09 t/s avg=27.17 t/s 5.520s
+0617 13:22:36 ds4-server: chat ctx=5599..5649:50 gen=200 TOOLS DSML_START decoding chunk=27.07 t/s avg=27.15 t/s 7.368s
+0617 13:22:38 ds4-server: chat ctx=5649..5699:50 gen=250 TOOLS DSML_START decoding chunk=27.08 t/s avg=27.13 t/s 9.214s
+0617 13:22:39 ds4-server: chat ctx=5699..5733:34 gen=284 TOOLS DSML_START DSML_END decoding chunk=27.23 t/s avg=27.14 t/s 10.463s
+0617 13:22:39 ds4-server: tool calls ctx=0..5449:5449 n=1 raw_dsml=1 ids=[call_879de815d32ec1a46b056a39beeaef07] names=[write_file]
+0617 13:22:39 ds4-server: chat ctx=0..5449:5449 gen=284 TOOLS DSML_START DSML_END finish=tool_calls 43.443s
+0617 13:22:39 ds4-server: live kv cache miss live=5733 prompt=5745 common=5449 reason=token-mismatch
+0617 13:22:39 ds4-server: chat ctx=0..5745:5745 TOOLS prompt start
+0617 13:23:14 ds4-server: chat ctx=0..5745:5745 TOOLS prompt done 34.791s
+0617 13:23:15 ds4-server: chat ctx=5745..5795:50 gen=50 TOOLS DSML_START decoding chunk=27.24 t/s avg=27.24 t/s 1.836s
+0617 13:23:16 ds4-server: chat ctx=5795..5812:17 gen=67 TOOLS DSML_START DSML_END decoding chunk=27.39 t/s avg=27.28 t/s 2.456s
+0617 13:23:16 ds4-server: tool calls ctx=0..5745:5745 n=1 raw_dsml=1 ids=[call_893388e53d1a61062fc1afd0941798fb] names=[run_shell]
+0617 13:23:16 ds4-server: chat ctx=0..5745:5745 gen=67 TOOLS DSML_START DSML_END finish=tool_calls 37.247s
+0617 13:23:16 ds4-server: live kv cache miss live=5812 prompt=5934 common=5745 reason=token-mismatch
+0617 13:23:16 ds4-server: chat ctx=0..5934:5934 TOOLS prompt start
+0617 13:23:52 ds4-server: chat ctx=0..5934:5934 TOOLS prompt done 35.942s
+0617 13:23:54 ds4-server: chat ctx=5934..5984:50 gen=50 TOOLS decoding chunk=27.09 t/s avg=27.09 t/s 1.846s
+0617 13:23:56 ds4-server: chat ctx=5984..6034:50 gen=100 TOOLS decoding chunk=27.09 t/s avg=27.09 t/s 3.691s
+0617 13:23:57 ds4-server: chat ctx=6034..6057:23 gen=123 TOOLS decoding chunk=27.05 t/s avg=27.08 t/s 4.542s
+0617 13:23:57 ds4-server: chat ctx=0..5934:5934 gen=123 TOOLS finish=stop 40.484s
+0617 13:23:57 ds4-server: live kv cache miss live=6057 prompt=1221 common=1 reason=token-mismatch
+0617 13:23:57 ds4-server: chat ctx=0..1221:1221 prompt start
+0617 13:24:04 ds4-server: chat ctx=0..1221:1221 prompt done 7.368s
+0617 13:24:06 ds4-server: chat ctx=1221..1271:50 gen=50 decoding chunk=30.41 t/s avg=30.41 t/s 1.644s
+0617 13:24:07 ds4-server: chat ctx=1271..1321:50 gen=100 decoding chunk=30.32 t/s avg=30.36 t/s 3.293s
+0617 13:24:09 ds4-server: chat ctx=1321..1361:40 gen=140 decoding chunk=30.29 t/s avg=30.34 t/s 4.614s
+0617 13:24:09 ds4-server: chat ctx=0..1221:1221 gen=140 finish=stop 11.982s
