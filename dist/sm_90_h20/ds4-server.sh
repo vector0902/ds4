@@ -8,9 +8,13 @@ export DS4_CUDA_Q8_F16_CACHE_MB=3072
 
 EXE="ds4-server"
 
-OPTS=" --port 8888 --prefill-chunk 8192 --threads 4 $OPTS "
+#OPTS=" --threads 4 $OPTS "
+OPTS=" --threads 30 $OPTS "
+OPTS=" --port 8888 --prefill-chunk 8192 $OPTS "
 
 LOG="$EXE-$(date +%s).log"
+
+set -x
 
 ./$EXE $OPTS 2>&1 | tee $LOG
 
